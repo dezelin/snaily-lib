@@ -1,4 +1,4 @@
-snaily-lib
-==========
+libsnaily
+=========
 
-BitMessage protocol C++ library 
+BitMessage protocol C++ library.
