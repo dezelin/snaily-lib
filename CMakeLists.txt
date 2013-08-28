@@ -29,7 +29,17 @@ else ()
     set(CMAKE_VERBOSE_MAKEFILE 0)
 endif ()
 
-add_definitions ("-Wall -std=c++11")
+if (MSVC) 
+	# VS2012 doesn't support correctly the tuples yet
+	add_definitions("/D _VARIADIC_MAX=10")
+	if (CMAKE_BUILD_TYPE MATCHES Debug)
+		add_definitions ("/MTd")
+	else ()
+		add_definitions ("/MT")
+	endif ()
+else ()
+	add_definitions ("-Wall -std=c++11")
+endif ()
 
 enable_testing ()
 
